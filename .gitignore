@@ -1,0 +1,345 @@
+# Chatsy Extension Git Ignore File
+# Prevents sensitive files and build artifacts from being committed
+
+# =============================================================================
+# ENVIRONMENT & CONFIGURATION FILES
+# =============================================================================
+
+# Environment files (NEVER commit these)
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+.env.test
+config.env
+config.env.local
+config.env.development
+config.env.production
+config.env.staging
+config.env.test
+
+# Configuration files with sensitive data
+secrets.json
+credentials.json
+api-keys.json
+config.json
+settings.json
+
+# =============================================================================
+# BUILD & DISTRIBUTION FILES
+# =============================================================================
+
+# Build outputs
+dist/
+build/
+out/
+target/
+*.zip
+*.crx
+*.pem
+
+# Chrome Web Store package
+*.crx
+*.pem
+*.zip
+
+# =============================================================================
+# DEPENDENCIES & PACKAGE MANAGERS
+# =============================================================================
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Python dependencies
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# =============================================================================
+# DEVELOPMENT & EDITOR FILES
+# =============================================================================
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Editor config
+.editorconfig
+.eslintrc.js
+.prettierrc
+.babelrc
+tsconfig.json
+
+# =============================================================================
+# LOGS & TEMPORARY FILES
+# =============================================================================
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# =============================================================================
+# TESTING & COVERAGE
+# =============================================================================
+
+# Test coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Test results
+test-results/
+playwright-report/
+cypress/videos/
+cypress/screenshots/
+
+# =============================================================================
+# OPERATING SYSTEM FILES
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# SECURITY & PRIVATE FILES
+# =============================================================================
+
+# Private keys and certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.der
+*.p12
+*.pfx
+
+# SSH keys
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+known_hosts
+
+# GPG keys
+*.gpg
+*.asc
+
+# =============================================================================
+# CACHE & BACKUP FILES
+# =============================================================================
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*.swp
+*.swo
+
+# =============================================================================
+# EXTENSION SPECIFIC
+# =============================================================================
+
+# Chrome extension specific
+*.crx
+*.pem
+*.zip
+web-ext-artifacts/
+
+# Firefox extension specific
+*.xpi
+web-ext-artifacts/
+
+# Safari extension specific
+*.safariextz
+
+# =============================================================================
+# MONITORING & ANALYTICS
+# =============================================================================
+
+# Error tracking
+sentry.properties
+sentry-cli.properties
+
+# Performance monitoring
+newrelic.js
+newrelic.yml
+
+# Analytics
+google-analytics.js
+mixpanel.js
+amplitude.js
+
+# =============================================================================
+# DEPLOYMENT & CI/CD
+# =============================================================================
+
+# Deployment files
+.deploy/
+deploy.sh
+deploy.bat
+deploy.ps1
+
+# CI/CD configuration
+.github/workflows/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+azure-pipelines.yml
+Jenkinsfile
+
+# =============================================================================
+# DATABASE & STORAGE
+# =============================================================================
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.accdb
+
+# Storage files
+storage/
+data/
+uploads/
+downloads/
+
+# =============================================================================
+# MEDIA & ASSETS
+# =============================================================================
+
+# Media files (if not needed in repo)
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mp3
+*.wav
+*.flac
+*.aac
+
+# Image files (if not needed in repo)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+
+# =============================================================================
+# DOCUMENTATION & ASSETS
+# =============================================================================
+
+# Documentation builds
+docs/build/
+docs/_build/
+docs/.doctrees/
+
+# Asset builds
+assets/build/
+public/build/
+static/build/
+
+# =============================================================================
+# MISC & CUSTOM
+# =============================================================================
+
+# Custom ignore patterns
+# Add your project-specific ignore patterns here
+
+# =============================================================================
+# NOTES
+# =============================================================================
+
+# IMPORTANT REMINDERS:
+# 1. NEVER commit .env files or any files containing API keys
+# 2. NEVER commit private keys, certificates, or sensitive credentials
+# 3. NEVER commit user data or personal information
+# 4. NEVER commit build artifacts or generated files
+# 5. NEVER commit large media files unless absolutely necessary
+# 6. Regularly review this file and update as needed
+# 7. Use environment variables for sensitive configuration in production
+# 8. Consider using secret management services for production deployments
