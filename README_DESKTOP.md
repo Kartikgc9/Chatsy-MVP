@@ -31,7 +31,7 @@ A Windows desktop application that provides AI-powered texting assistance for Wh
 
 ### Project Structure
 ```
-Chatsy/
+chatsy-desktop/
 ├── src/
 │   ├── main.js (Electron main process)
 │   ├── preload.js (Secure IPC bridge)
@@ -49,7 +49,7 @@ Chatsy/
 ├── assets/
 │   └── icon.ico (Application icon)
 ├── package.json (Dependencies and scripts)
-└── README.md (This file)
+└── README_DESKTOP.md (This file)
 ```
 
 ## 🔧 Installation & Setup

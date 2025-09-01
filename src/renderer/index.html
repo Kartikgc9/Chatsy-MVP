@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatsy Desktop - AI Texting Assistant</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/themes.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-comments"></i>
+                    <span>Chatsy Desktop</span>
+                </div>
+            </div>
+            <div class="header-center">
+                <div class="status-indicator">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span class="status-text" id="statusText">Ready</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="icon-button" id="settingsBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="icon-button" id="minimizeBtn" title="Minimize">
+                    <i class="fas fa-window-minimize"></i>
+                </button>
+                <button class="icon-button" id="closeBtn" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <button class="nav-item active" data-view="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button class="nav-item" data-view="conversations">
+                        <i class="fas fa-comments"></i>
+                        <span>Conversations</span>
+                    </button>
+                    <button class="nav-item" data-view="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </button>
+                    <button class="nav-item" data-view="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Dashboard View -->
+                <div id="dashboardView" class="view active">
+                    <div class="dashboard-header">
+                        <h1>Dashboard</h1>
+                        <p>AI-powered texting assistant running in the background</p>
+                    </div>
+                    
+                    <div class="dashboard-grid">
+                        <!-- Status Card -->
+                        <div class="card status-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-circle"></i> Status</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="status-item">
+                                    <span class="label">Service Status:</span>
+                                    <span class="value" id="serviceStatus">Running</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="label">Active Platforms:</span>
+                                    <span class="value" id="activePlatforms">WhatsApp, Instagram, Telegram</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="label">AI Provider:</span>
+                                    <span class="value" id="aiProvider">HuggingFace</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="card stats-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-bar"></i> Quick Stats</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="stat-item">
+                                    <span class="stat-number" id="totalConversations">0</span>
+                                    <span class="stat-label">Conversations</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" id="totalMessages">0</span>
+                                    <span class="stat-label">Messages</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" id="suggestionsGiven">0</span>
+                                    <span class="stat-label">Suggestions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="card activity-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                            </div>
+                            <div class="card-content">
+                                <div id="recentActivity" class="activity-list">
+                                    <div class="activity-item">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>No recent activity</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="card actions-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                            </div>
+                            <div class="card-content">
+                                <button class="action-btn" id="startServiceBtn">
+                                    <i class="fas fa-play"></i>
+                                    Start Service
+                                </button>
+                                <button class="action-btn" id="stopServiceBtn">
+                                    <i class="fas fa-stop"></i>
+                                    Stop Service
+                                </button>
+                                <button class="action-btn" id="exportDataBtn">
+                                    <i class="fas fa-download"></i>
+                                    Export Data
+                                </button>
+                                <button class="action-btn" id="clearDataBtn">
+                                    <i class="fas fa-trash"></i>
+                                    Clear Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conversations View -->
+                <div id="conversationsView" class="view">
+                    <div class="view-header">
+                        <h1>Conversations</h1>
+                        <div class="view-actions">
+                            <button class="btn btn-primary" id="refreshConversationsBtn">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    <div id="conversationsList" class="conversations-list">
+                        <!-- Conversations will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Analytics View -->
+                <div id="analyticsView" class="view">
+                    <div class="view-header">
+                        <h1>Analytics</h1>
+                        <div class="view-actions">
+                            <select id="analyticsPeriod" class="select">
+                                <option value="7">Last 7 days</option>
+                                <option value="30" selected>Last 30 days</option>
+                                <option value="90">Last 90 days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Message Volume</h3>
+                            </div>
+                            <div class="card-content">
+                                <canvas id="messageVolumeChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Platform Usage</h3>
+                            </div>
+                            <div class="card-content">
+                                <canvas id="platformUsageChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings View -->
+                <div id="settingsView" class="view">
+                    <div class="view-header">
+                        <h1>Settings</h1>
+                    </div>
+                    <div class="settings-container">
+                        <!-- General Settings -->
+                        <div class="settings-section">
+                            <h3>General Settings</h3>
+                            <div class="setting-item">
+                                <label for="autoStart">Auto-start with Windows</label>
+                                <input type="checkbox" id="autoStart" class="toggle">
+                            </div>
+                            <div class="setting-item">
+                                <label for="minimizeToTray">Minimize to system tray</label>
+                                <input type="checkbox" id="minimizeToTray" class="toggle">
+                            </div>
+                            <div class="setting-item">
+                                <label for="notifications">Enable notifications</label>
+                                <input type="checkbox" id="notifications" class="toggle">
+                            </div>
+                            <div class="setting-item">
+                                <label for="theme">Theme</label>
+                                <select id="theme" class="select">
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="auto">Auto</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- AI Settings -->
+                        <div class="settings-section">
+                            <h3>AI Configuration</h3>
+                            <div class="setting-item">
+                                <label for="huggingfaceKey">HuggingFace API Key</label>
+                                <input type="password" id="huggingfaceKey" class="input" placeholder="Enter your API key">
+                            </div>
+                            <div class="setting-item">
+                                <label for="geminiKey">Google Gemini API Key</label>
+                                <input type="password" id="geminiKey" class="input" placeholder="Enter your API key">
+                            </div>
+                            <div class="setting-item">
+                                <label for="openaiKey">OpenAI API Key</label>
+                                <input type="password" id="openaiKey" class="input" placeholder="Enter your API key">
+                            </div>
+                        </div>
+
+                        <!-- Privacy Settings -->
+                        <div class="settings-section">
+                            <h3>Privacy & Security</h3>
+                            <div class="setting-item">
+                                <label for="dataRetention">Data retention (days)</label>
+                                <input type="number" id="dataRetention" class="input" min="1" max="365" value="30">
+                            </div>
+                            <div class="setting-item">
+                                <label for="enableEncryption">Enable data encryption</label>
+                                <input type="checkbox" id="enableEncryption" class="toggle">
+                            </div>
+                            <div class="setting-item">
+                                <label for="enableAnalytics">Enable usage analytics</label>
+                                <input type="checkbox" id="enableAnalytics" class="toggle">
+                            </div>
+                        </div>
+
+                        <div class="settings-actions">
+                            <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+                            <button class="btn btn-secondary" id="resetSettingsBtn">Reset to Defaults</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="modalContent">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notifications" class="notifications"></div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/conversations.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>
