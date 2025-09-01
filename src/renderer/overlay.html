@@ -1,0 +1,30 @@
+<!-- Cluely-like overlay UI for Chatsy -->
+<div id="suggestionOverlay" class="suggestion-overlay" style="display:none;">
+  <!-- Suggestions will be injected here -->
+</div>
+<script type="module">
+import { generateSuggestions } from './js/aiSuggestions.js';
+import { extractConversationContext } from './js/messagingIntegration.js';
+
+function showSuggestions() {
+  const context = extractConversationContext();
+  const suggestions = generateSuggestions(context);
+  const overlay = document.getElementById('suggestionOverlay');
+  overlay.innerHTML = '';
+  suggestions.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'suggestion';
+    el.textContent = s;
+    el.onclick = () => {
+      // TODO: Insert suggestion into message input
+      overlay.style.display = 'none';
+    };
+    overlay.appendChild(el);
+  });
+  overlay.style.display = 'flex';
+}
+
+// Example: Show suggestions on page load for demo
+window.onload = showSuggestions;
+</script>
+<link rel="stylesheet" href="./styles/overlay.css">
